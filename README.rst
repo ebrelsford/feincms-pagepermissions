@@ -36,6 +36,11 @@ Then add the extension to your content type:
 This will add a permissions field to your content type that you will have to add
 yourself through syncdb or South or otherwise.
 
+Finally, when you edit or add a page you will have the option of setting the
+permissions required for a user to view that page. You can select multiple
+permissions, and if the user has any of those they will be able to view the
+page. Otherwise they will receive a 403.
+
 
 Contributing
 ------------
