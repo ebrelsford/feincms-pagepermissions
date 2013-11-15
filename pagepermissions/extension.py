@@ -13,7 +13,8 @@ def has_permission_to_view(page, user):
     if page.permissions.count() == 0:
         return True
     for perm in page.permissions.all():
-        if user.has_perm(perm):
+        perm_label = '%s.%s' % (perm.content_type.app_label, perm.codename)
+        if user.has_perm(perm, perm_label):
             return True
     return False
 
