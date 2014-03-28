@@ -2,6 +2,35 @@ from django.core.exceptions import PermissionDenied
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
 
+from feincms import extensions
+
+
+class Extension(extensions.Extension):
+
+    def handle_model(self):
+
+        #
+        # Add custom fields to the (Page) class
+        #
+        self.model.add_to_class('permissions',
+                                models.ManyToManyField('auth.Permission',
+                                                verbose_name=_('permissions'),
+                                                blank=True,
+                                                null=True))
+
+        #
+        # Add request processor to do permission checks
+        #
+        self.model.register_request_processor(permission_request_processor)
+
+    def handle_modeladmin(self, modeladmin):
+        #
+        # Add custom fields to the admin class
+        #
+        modeladmin.add_extension_options(_('Permissions'), {
+            'fields': ['permissions',],
+        })
+
 
 def has_permission_to_view(page, user):
     """
@@ -27,27 +56,3 @@ def permission_request_processor(page, request):
     """
     if not has_permission_to_view(page, request.user):
         raise PermissionDenied
-
-
-def register(cls, admin_cls):
-
-    #
-    # Add custom fields to the (Page) class
-    #
-    cls.add_to_class('permissions',
-                     models.ManyToManyField('auth.Permission',
-                                            verbose_name=_('permissions'),
-                                            blank=True,
-                                            null=True))
-
-    #
-    # Add request processor to do permission checks
-    #
-    cls.register_request_processor(permission_request_processor)
-
-    #
-    # Add custom fields to the admin class
-    #
-    admin_cls.add_extension_options(_('Permissions'), {
-        'fields': ['permissions',],
-    })

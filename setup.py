@@ -29,8 +29,8 @@ setup(
     platforms=['OS Independent'],
     classifiers=CLASSIFIERS,
     install_requires=[
-        'Django>=1.3.1',
-        'FeinCMS>=1.7.4',
+        'Django>=1.6.0',
+        'FeinCMS>=1.9.0',
     ],
     packages=find_packages(),
     include_package_data=True,
