@@ -7,4 +7,4 @@ register = template.Library()
 
 @register.filter
 def check_nav_permission(page, request):
-  return has_permission_to_view(page, request.user)
+    return has_permission_to_view(page, request.user)
