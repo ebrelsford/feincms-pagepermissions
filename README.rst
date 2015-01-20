@@ -41,8 +41,9 @@ permissions required for a user to view that page. You can select multiple
 permissions, and if the user has any of those they will be able to view the
 page. Otherwise they will receive a 403.
 
-Finally, you may also want to keep a page out of the navigation if the user has no permission to view it.
-For this, there is a template filter called "check_nav_permission". Use it as follows in your template:
+Finally, you may also want to keep a page out of the navigation if the user has
+no permission to view it. For this, there is a template filter called 
+"check_nav_permission". Use it as follows in your template:
 
 ::
 
