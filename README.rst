@@ -47,7 +47,7 @@ no permission to view it. For this, there is a template filter called
 
 ::
 
-   {% load feincms_page_tags feincms_permissions_tags %}
+   {% load feincms_page_tags feincms_pagepermissions_tags %}
    
    {% feincms_nav feincms_page level=1 depth=1 as level1 %}
    {% for page in level1 %}
