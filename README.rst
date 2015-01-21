@@ -36,10 +36,25 @@ Then add the extension to your content type:
 This will add a permissions field to your content type that you will have to add
 yourself through syncdb or South or otherwise.
 
-Finally, when you edit or add a page you will have the option of setting the
+When you edit or add a page you will have the option of setting the
 permissions required for a user to view that page. You can select multiple
 permissions, and if the user has any of those they will be able to view the
 page. Otherwise they will receive a 403.
+
+Finally, you may also want to keep a page out of the navigation if the user has
+no permission to view it. For this, there is a template filter called 
+"check_page_permission". Use it as follows in your template:
+
+::
+
+   {% load feincms_page_tags feincms_pagepermissions_tags %}
+   
+   {% feincms_nav feincms_page level=1 depth=1 as level1 %}
+   {% for page in level1 %}
+       {% if page|check_page_permission:user %}
+          ...display page navigation...
+       {% endif %}
+   {% endfor %}
 
 
 Contributing
