@@ -17,7 +17,7 @@ Install using `pip <https://pypi.python.org/pypi/pip/>`_:
 
 Change your Django settings to include pagepermissions:
 
-::
+.. code:: python
 
     INSTALLED_APPS += (
         'pagepermissions',
@@ -25,7 +25,7 @@ Change your Django settings to include pagepermissions:
 
 Then add the extension to your content type:
 
-::
+.. code:: python
 
     Page.register_extensions(
         ...
