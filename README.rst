@@ -44,7 +44,7 @@ Finally, you may also want to keep a page out of the navigation if the user has
 no permission to view it. For this, there is a template filter called 
 "check_page_permission". Use it as follows in your template:
 
-::
+.. code:: django
 
    {% load feincms_page_tags feincms_pagepermissions_tags %}
    
