@@ -9,12 +9,11 @@ be any FeinCMS model.
 Usage
 -----
 
-Install using `pip <https://pypi.python.org/pypi/pip/>`_, which should get 
-any requirements, eg:
+Install using `pip <https://pypi.python.org/pypi/pip/>`_:
 
 ::
 
-    pip install git+git://github.com/ebrelsford/feincms-pagepermissions@master
+    pip install feincms-pagepermissions
 
 Change your Django settings to include pagepermissions:
 
