@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load feincms_tags feincms_page_tags feincms_pagepermissions_tags i18n static %}
+<html>
+    <head>
+    </head>
+    <body>
+        <nav id="mainmenu" class="clearfix">
+            Navigation:
+            <ul>
+                {% feincms_nav feincms_page level=2 depth=1 as mainmenu %}
+                {% for page in mainmenu %}
+                    {% if page|check_page_permission:user %}
+                        <li class="mainmenu-item">
+                            <a href="{{ page.get_absolute_url }}">{{ page.title }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        </nav>
+
+        <article>
+            {% feincms_render_region feincms_page "main" request %}
+        </article>
+    </body>
+</html>
