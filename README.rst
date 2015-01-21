@@ -51,7 +51,7 @@ no permission to view it. For this, there is a template filter called
    
    {% feincms_nav feincms_page level=1 depth=1 as level1 %}
    {% for page in level1 %}
-       {% if page|check_page_permission:request %}
+       {% if page|check_page_permission:user %}
           ...display page navigation...
        {% endif %}
    {% endfor %}

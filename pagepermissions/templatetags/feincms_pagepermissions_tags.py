@@ -6,5 +6,5 @@ register = template.Library()
  
 
 @register.filter
-def check_page_permission(page, request):
-    return has_permission_to_view(page, request.user)
+def check_page_permission(page, user):
+    return has_permission_to_view(page, user)
