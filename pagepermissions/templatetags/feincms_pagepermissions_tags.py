@@ -1,6 +1,6 @@
 from django import template
 
-from pagepermissions.extension import has_permission_to_view
+from ..extension import has_permission_to_view
 
 register = template.Library()
  
