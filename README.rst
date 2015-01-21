@@ -43,7 +43,7 @@ page. Otherwise they will receive a 403.
 
 Finally, you may also want to keep a page out of the navigation if the user has
 no permission to view it. For this, there is a template filter called 
-"check_nav_permission". Use it as follows in your template:
+"check_page_permission". Use it as follows in your template:
 
 ::
 
@@ -51,7 +51,7 @@ no permission to view it. For this, there is a template filter called
    
    {% feincms_nav feincms_page level=1 depth=1 as level1 %}
    {% for page in level1 %}
-       {% if page|check_nav_permission:request %}
+       {% if page|check_page_permission:request %}
           ...display page navigation...
        {% endif %}
    {% endfor %}
