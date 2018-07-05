@@ -15,8 +15,7 @@ class Extension(extensions.Extension):
         self.model.add_to_class('permissions',
                                 models.ManyToManyField('auth.Permission',
                                                 verbose_name=_('permissions'),
-                                                blank=True,
-                                                null=True))
+                                                blank=True))
 
         #
         # Add request processor to do permission checks
