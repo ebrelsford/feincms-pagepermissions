@@ -32,6 +32,20 @@ Then add the extension to your content type:
         'pagepermissions.extension',
     )
 
+If you need to specify arguments for `permissions` field, i.e. `limit_choices_to`:
+
+.. code:: python
+
+    from pagepermissions.extension import ExtensionFactory as PagePermissionExtensionFactory
+    
+    Page.register_extensions(
+        ...
+        PagePermissionExtensionFactory.with_model_params(
+            'MyCustomPermissionExt',
+            limit_choices_to=Q(…)
+        ),
+    )
+
 This will add a permissions field to your content type that you will have to add
 yourself through syncdb or South or otherwise.
 

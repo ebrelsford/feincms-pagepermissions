@@ -4,6 +4,11 @@ from django.utils.translation import ugettext_lazy as _
 
 from feincms import extensions
 
+class ExtensionFactory:
+    @staticmethod
+    def with_model_params(name, **model_kwargs):
+        return type(name, (Extension, ), {'model_kwargs': model_kwargs})
+
 
 class Extension(extensions.Extension):
 
@@ -12,10 +17,12 @@ class Extension(extensions.Extension):
         #
         # Add custom fields to the (Page) class
         #
+        model_kwargs = getattr(self, 'model_kwargs', {})
         self.model.add_to_class('permissions',
                                 models.ManyToManyField('auth.Permission',
                                                 verbose_name=_('permissions'),
-                                                blank=True))
+                                                blank=True,
+                                                **model_kwargs))
 
         #
         # Add request processor to do permission checks
