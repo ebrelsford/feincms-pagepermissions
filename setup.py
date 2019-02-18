@@ -1,5 +1,6 @@
 from setuptools import setup, find_packages
 import os
+import codecs
 
 import pagepermissions
 
@@ -23,7 +24,8 @@ setup(
     version=pagepermissions.__version__,
     description=('A simple FeinCMS extension that adds permission-checking to '
                  'a model.'),
-    long_description=open(os.path.join(os.path.dirname(__file__), 'README.rst')).read(),
+    long_description=codecs.open(
+        os.path.join(os.path.dirname(__file__), 'README.rst'), 'r', 'utf-8').read(),
     url='https://github.com/ebrelsford/feincms-pagepermissions/',
     license='BSD License',
     platforms=['OS Independent'],
